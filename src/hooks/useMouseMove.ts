@@ -6,11 +6,17 @@ export default function useMouseMove(target: HTMLElement | null) {
   const [direction, setDirection] = useState<"top" | "bottom">("top");
 
   useEffect(() => {
-    if (!target) return;
+    if (!target) {
+      console.log("No target element provided/found");
+      return;
+    };
+
+    console.log("Target element found:", target);
+
+    let id: number;
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = target.getBoundingClientRect();
-
       const inside =
         e.clientX >= rect.left &&
         e.clientX <= rect.right &&
@@ -25,18 +31,26 @@ export default function useMouseMove(target: HTMLElement | null) {
         });
       } else {
         setTrack(false);
-
         const middleY = rect.top + rect.height / 2;
         if (e.clientY < middleY) {
           setDirection("top");
-        } else if (e.clientY > middleY) {
+        } else {
           setDirection("bottom");
         }
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const handleRaf = (e: MouseEvent) => {
+      if (id) cancelAnimationFrame(id);
+      id = requestAnimationFrame(() => handleMouseMove(e));
+    };
+
+    window.addEventListener("mousemove", handleRaf);
+
+    return () => {
+      window.removeEventListener("mousemove", handleRaf);
+      if (id) cancelAnimationFrame(id);
+    };
   }, [target]);
 
   return { x: position.x, y: position.y, track, direction };

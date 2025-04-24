@@ -9,21 +9,25 @@ export default function Cursor({ children, x, y, track, exit }: { children: Reac
     const [bottom, setBottom] = useState<string | number>("auto");
 
     useEffect(() => {
-        switch (exit) {
+        const update = () => {
+          switch (exit) {
             case "top":
-                setTop(track ? y : 0);
-                setLeft(track ? x : "auto");
-                setRight(track ? "auto" : 0);
-                setBottom(track ? "auto" : 0);
-                break;
+              setTop(track ? y : 0);
+              setLeft(track ? x : "auto");
+              setRight(track ? "auto" : 0);
+              setBottom(track ? "auto" : 0);
+              break;
             case "bottom":
-                setTop(track ? y : "auto");
-                setLeft(track ? x : 0);
-                setBottom(track ? "auto" : 0);
-                setRight("auto");
-                break;
-        }
-    }, [exit, track, x, y])
+              setTop(track ? y : "auto");
+              setLeft(track ? x : 0);
+              setBottom(track ? "auto" : 0);
+              setRight("auto");
+              break;
+          }
+        };
+      
+        update();
+      }, [exit, track, x, y]);
 
     return (
         <div 
