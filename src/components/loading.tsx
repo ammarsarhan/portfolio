@@ -3,6 +3,27 @@ import gsap, { Power4 } from "gsap";
 
 export default function Loading({ progress } : { progress: number }) {
     useEffect(() => {
+        const target = 'div.loading-container > div:first-child > div > span > span';
+        const tl = gsap.timeline();
+
+        tl.to(target, {
+            duration: 0.5,
+            opacity: 0,
+            stagger: 0.15,
+            ease: Power4.easeInOut
+        })
+
+        tl.to(target, {
+            duration: 0.5,
+            opacity: 1,
+            stagger: 0.15,
+            ease: Power4.easeInOut
+        })
+
+        tl.repeat(-1);
+    }, [])
+
+    useEffect(() => {
         if (progress === 100) {
             const tl = gsap.timeline();
 
@@ -30,7 +51,24 @@ export default function Loading({ progress } : { progress: number }) {
     return (
         <div className="fixed top-0 left-0 z-50 w-full h-screen loading-container">
             <div className="flex-center w-full h-full fixed top-0 left-0 text-white">
-                <p className="text-center">Hello from sarhan.studio! <br/> {progress}%</p>
+                <div className="flex flex-col text-center">
+                    <span className="text-lg">
+                        <span>s</span>
+                        <span>a</span>
+                        <span>r</span>
+                        <span>h</span>
+                        <span>a</span>
+                        <span>n</span>
+                        <span>.</span>
+                        <span>s</span>
+                        <span>t</span>
+                        <span>u</span>
+                        <span>d</span>
+                        <span>i</span>
+                        <span>o</span>
+                    </span>
+                    <span>{progress}%</span>
+                </div>
             </div>
             <div className="flex w-full h-full loading-cols">
                 <div className="h-full w-1/8 bg-blue-800"></div>
