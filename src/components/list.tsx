@@ -9,7 +9,7 @@ export function ListItem({ title, description, items, index } : { title: string,
             <div className="flex justify-between pt-8 pb-4">
                 <div>
                     <h2 className="text-4xl font-medium mb-6">{title}</h2>
-                    <p className="text-sm w-96">{description}</p>
+                    <p className="w-96">{description}</p>
                 </div>
                 <div>
                     <ul className="text-right w-96">

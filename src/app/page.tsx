@@ -1,16 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+
 import Loading from "@/components/loading";
 import { SectionLabel } from "@/components/labels";
-import Link from "next/link";
 import List, { ListItem } from "@/components/list";
+import Cursor from "@/components/cursor";
+
+import useMouseMove from "@/hooks/useMouseMove";
 
 export default function Home() {
+  const mainRef = useRef(null);
+
   const [progress, setProgress] = useState(0);
+  const { x, y, track, direction } = useMouseMove(mainRef.current);
 
   useEffect(() => {
-    const duration = 5000;
+    const duration = 2000;
 
     const interval = setInterval(() => {
       setProgress(prev => {
@@ -51,26 +58,21 @@ export default function Home() {
         <section>
           <SectionLabel label="Who are we?" index={1}/>
           <div className="my-6">
-            <div className="w-full h-96 flex flex-col gap-y-4 items-end justify-center px-8 rounded-md plasma text-white text-sm">
+            <div className="w-full h-[25rem] flex flex-col gap-y-4 items-end justify-center px-8 rounded-md plasma text-white text-sm">
               <span className="text-8xl mb-3">سَرْحَان</span>
               <span>/sarˈħɑːn/ noun</span>
               <p className="text-sm font-medium w-80 text-right">From Arabic سَرْحَان — someone mentally drifting; used to describe being lost in a trance of deep thought.</p>
             </div>
-            <div className="flex flex-wrap gap-8 justify-between mt-18">
-              <div className="w-80">
-                <h3 className="mb-2 font-medium">Origins</h3>
-                <p className="text-sm"><span className="italic">sarhan.studio</span> started as an idea. What if we could take traditional websites, and turn them into beautiful, unique digital experiences that captivate the eye, while remaining accessible to the masses?</p>
-              </div>
-              <div className="w-80">
-                <h3 className="mb-2 font-medium">Ideology</h3>
-                <p className="text-sm">We do not build websites for the sake of functionality alone. We believe in building experiences that make people pause. We create digital spaces that make users feel like they&apos;re walking through a dream. Every scroll, every subtle animation, every word feels intentional—designed to gently pull them in.</p>
-              </div>
-              <div className="w-80">
-                <p className="text-sm">In doing so, we manage to appeal to a wide range of consumers, while retaining the intended niche audience&apos;s attention. This in turn, helps small businesses grow and evolve into something beautiful.</p>
-              </div>
-              <div className="w-80 flex items-end justify-end">
-                <Link href="/mission" className="text-sm text-blue-800 hover:underline">Read More →</Link>
-              </div>
+            <div className="relative grid grid-rows-[auto_auto_auto_auto] grid-cols-2 mt-14 gap-y-16 gap-x-4 cursor-none" ref={mainRef}>
+              <Cursor x={x} y={y} track={track} exit={direction}>
+                <Link className={`rounded-full px-4 py-2 cursor-none ${track ? "bg-black text-white" : "bg-gray-300"}`} href={"/mission"}>
+                  <span className="text-sm text-nowrap">Learn More →</span>
+                </Link>
+              </Cursor>
+              <h2 className="text-6xl col-start-1 row-start-1">We are a small team that specializes in creating digital experiences that breathe with intuition and beauty.</h2>
+              <h2 className="text-6xl col-start-2 row-start-2">*A global creative studio that blends dreamlike design with precision engineering to build web experiences that move, breathe, and connect.</h2>
+              <h2 className="text-6xl col-start-1 row-start-3">With a team size of 5 core members and a trusted circle of global collaborators, we scale with purpose and partner with impact.</h2>
+              <h2 className="text-6xl col-start-2 row-start-4">We believe the web isn&apos;t just a place to visit. Our work lives in that sweet spot between art and utility, where people don&apos;t just interact — they connect.</h2>
             </div>
           </div>
         </section>

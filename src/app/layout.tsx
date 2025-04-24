@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/navigation";
 import "./globals.css";
+import ReactLenis from "lenis/react";
 
 export const metadata: Metadata = {
   title: "sarhan.studio",
@@ -16,7 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <Navigation/>
-        {children}
+        <ReactLenis root>
+          {children}
+        </ReactLenis>
       </body>
     </html>
   );
