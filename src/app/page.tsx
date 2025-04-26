@@ -7,6 +7,14 @@ import { SectionLabel } from "@/components/labels";
 import List, { ListItem } from "@/components/list";
 import Cursor from "@/components/cursor";
 import useMouseMove from "@/hooks/useMouseMove";
+import CaseItem from "@/components/case";
+
+import { Noto_Naskh_Arabic } from "next/font/google";
+
+const notoNaskhArabic = Noto_Naskh_Arabic({
+  subsets: ['arabic'],
+  weight: ['400', '700'],
+});
 
 export default function Home() {
   const trackable = useRef(null);
@@ -41,7 +49,7 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-full bg-blue-900"></div>
                 <div className="w-16 h-16 rounded-full bg-blue-800 -mx-3"></div>
                 <div className="relative w-16 h-16 rounded-full bg-blue-700">
-                  <span className="absolute top-1.5 left-1/2 -translate-x-1/2 text-white text-4xl">س</span>
+                  <span className={`absolute top-1.5 left-1/2 -translate-x-1/2 text-white text-4xl ${notoNaskhArabic.className}`}>س</span>
                 </div>
               </div>
               <p className="w-80 text-sm">We empower small businesses by creating strong online web presences at affordable rates while providing top-notch SEO optimization, captivating design, and impeccable user experience.</p>
@@ -55,10 +63,10 @@ export default function Home() {
         <section>
           <SectionLabel label="Who are we?" index={1} />
           <div className="my-6">
-            <div className="w-full h-[25rem] flex flex-col gap-y-4 items-end justify-center px-8 rounded-md plasma text-white text-sm">
-              <span className="text-8xl mb-3">سَرْحَان</span>
+            <div className="relative w-full h-[25rem] flex flex-col gap-y-4 items-end justify-center px-8 rounded-md plasma text-white text-sm">
+              <span className={`text-8xl mb-3 ${notoNaskhArabic.className}`}>سَرْحَان</span>
               <span>/sarˈħɑːn/ noun</span>
-              <p className="text-sm font-medium w-80 text-right">From Arabic سَرْحَان — someone mentally drifting; used to describe being lost in a trance of deep thought.</p>
+              <p className="text-sm font-medium w-80 text-right">From Arabic <span className={notoNaskhArabic.className}>سَرْحَان</span> — someone mentally drifting; used to describe being lost in a trance of deep thought.</p>
             </div>
             <div className="relative grid grid-rows-[auto_auto_auto_auto] grid-cols-2 mt-14 gap-y-16 gap-x-4" ref={trackable}>
               <Cursor x={x} y={y} track={track} exit={direction}>
@@ -105,30 +113,19 @@ export default function Home() {
           </div>
         </section>
         <section className="flex flex-col gap-y-8">
-          <SectionLabel label="Case studies" index={3}/>
-          <div className="grid grid-cols-2 grid-rows-[auto_auto_auto_auto] gap-4">
-            <div className="w-full h-[60vh] plasma">
-
-            </div>
+          <SectionLabel label="Project catalogue" index={3}/>
+          <div className="grid grid-cols-2 grid-rows-[auto_auto_auto_auto] gap-x-8 gap-y-16">
+            <CaseItem title="Hagz" label="Football Pitch Reservation" description="Research, UI/UX Design, Motion Design, Frontend Development, Backend Development"/>
             <div></div>
-            <div className="w-full h-[60vh] plasma">
-
-            </div>
-            <div className="w-full h-[60vh] plasma">
-
-            </div>
+            <CaseItem title="Tamreena" label="Workout Generation Application" description="Research, UI/UX Design, Motion Design, Frontend Development, Backend Development"/>
+            <CaseItem title="Revtech" label="Redefining E-Commerce" description="Research, UI/UX Design, Motion Design, Frontend Development, Backend Development"/>
             <div></div>
-            <div className="w-full h-[60vh] plasma">
-
-            </div>
-            <div className="w-full h-[60vh] plasma">
-              
-            </div>
-            <div></div>
+            <CaseItem title="SIS" label="Student Information System" description="Research, UI/UX Design, Frontend Development"/>
+            <CaseItem title="Bookstore" label="Online Book Management System" description="Python3, JSON, Flask, UI/UX Design, Frontend Development"/>
           </div>
         </section>
         <section className="flex flex-col gap-y-8">
-          <SectionLabel label="Wanna work with us?" index={4}/>
+          <SectionLabel label="Working with us" index={4}/>
         </section>
       </div>
     </>

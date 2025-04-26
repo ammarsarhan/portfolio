@@ -24,44 +24,44 @@ export function ListItem({
         start: "top 75%",
         end: "top 25%",
         onEnter: () => {
-            gsap.to(indexRef.current, {
-                backgroundColor: "black",
-                color: "white",
-                paddingLeft: "1rem",
-                paddingRight: "1rem",
-                duration: 0.5,
-                ease: Power4.easeInOut,
-            });
+          gsap.to(indexRef.current, {
+            backgroundColor: "black",
+            color: "white",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+            duration: 0.5,
+            ease: Power4.easeInOut,
+          });
         },
         onEnterBack: () => {
-            gsap.to(indexRef.current, {
-                backgroundColor: "black",
-                color: "white",
-                paddingLeft: "1rem",
-                paddingRight: "1rem",
-                duration: 0.5,
-                ease: Power4.easeInOut,
-            });
+          gsap.to(indexRef.current, {
+            backgroundColor: "black",
+            color: "white",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+            duration: 0.5,
+            ease: Power4.easeInOut,
+          });
         },
         onLeave: () => {
-            gsap.to(indexRef.current, {
-                backgroundColor: "rgb(240, 240, 240)",
-                color: "black",
-                paddingLeft: "0.25rem",
-                paddingRight: "0.25rem",
-                duration: 0.5,
-                ease: Power4.easeInOut,
-            });
+          gsap.to(indexRef.current, {
+            backgroundColor: "rgb(240, 240, 240)",
+            color: "black",
+            paddingLeft: "0.25rem",
+            paddingRight: "0.25rem",
+            duration: 0.5,
+            ease: Power4.easeInOut,
+          });
         },
         onLeaveBack: () => {
-            gsap.to(indexRef.current, {
-                backgroundColor: "rgb(240, 240, 240)",
-                color: "black",
-                paddingLeft: "0.25rem",
-                paddingRight: "0.25rem",
-                duration: 0.5,
-                ease: Power4.easeInOut,
-            });
+          gsap.to(indexRef.current, {
+            backgroundColor: "rgb(240, 240, 240)",
+            color: "black",
+            paddingLeft: "0.25rem",
+            paddingRight: "0.25rem",
+            duration: 0.5,
+            ease: Power4.easeInOut,
+          });
         }
     });
   }, []);
