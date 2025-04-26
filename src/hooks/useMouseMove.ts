@@ -7,11 +7,8 @@ export default function useMouseMove(target: HTMLElement | null) {
 
   useEffect(() => {
     if (!target) {
-      console.log("No target element provided/found");
       return;
     };
-
-    console.log("Target element found:", target);
 
     let id: number;
 

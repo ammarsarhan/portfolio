@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Navigation from "@/components/navigation";
-import "./globals.css";
 import ReactLenis from "lenis/react";
+import Navigation from "@/components/navigation";
+import ScrollProvider from "@/helpers/gsap/provider";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "sarhan.studio",
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+      <ScrollProvider>
         <Navigation/>
         <ReactLenis root>
           {children}
         </ReactLenis>
+      </ScrollProvider>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import Loading from "@/components/loading"; // Assuming this is your loading component
+import Loading from "@/components/loading";
 import { SectionLabel } from "@/components/labels";
 import List, { ListItem } from "@/components/list";
 import Cursor from "@/components/cursor";
@@ -60,9 +60,9 @@ export default function Home() {
               <span>/sarˈħɑːn/ noun</span>
               <p className="text-sm font-medium w-80 text-right">From Arabic سَرْحَان — someone mentally drifting; used to describe being lost in a trance of deep thought.</p>
             </div>
-            <div className="relative grid grid-rows-[auto_auto_auto_auto] grid-cols-2 mt-14 gap-y-16 gap-x-4 cursor-none" ref={trackable}>
+            <div className="relative grid grid-rows-[auto_auto_auto_auto] grid-cols-2 mt-14 gap-y-16 gap-x-4" ref={trackable}>
               <Cursor x={x} y={y} track={track} exit={direction}>
-                <Link className={`rounded-full px-4 py-2 cursor-none ${track ? "bg-black text-white" : "bg-gray-300"}`} href={"/mission"}>
+                <Link className={`rounded-full px-4 py-2 ${track ? "bg-black text-white" : "bg-gray-300"}`} href={"/mission"}>
                   <span className="text-sm text-nowrap">Learn More →</span>
                 </Link>
               </Cursor>
@@ -103,6 +103,32 @@ export default function Home() {
               />
             </List>
           </div>
+        </section>
+        <section className="flex flex-col gap-y-8">
+          <SectionLabel label="Case studies" index={3}/>
+          <div className="grid grid-cols-2 grid-rows-[auto_auto_auto_auto] gap-4">
+            <div className="w-full h-[60vh] plasma">
+
+            </div>
+            <div></div>
+            <div className="w-full h-[60vh] plasma">
+
+            </div>
+            <div className="w-full h-[60vh] plasma">
+
+            </div>
+            <div></div>
+            <div className="w-full h-[60vh] plasma">
+
+            </div>
+            <div className="w-full h-[60vh] plasma">
+              
+            </div>
+            <div></div>
+          </div>
+        </section>
+        <section className="flex flex-col gap-y-8">
+          <SectionLabel label="Wanna work with us?" index={4}/>
         </section>
       </div>
     </>

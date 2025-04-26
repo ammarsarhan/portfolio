@@ -81,7 +81,7 @@ html {
 }
 
 .plasma {
-  background: radial-gradient(circle at center, #7728ff 40%, #1e40af 100%);
+  background: radial-gradient(circle at center, #000483 40%, #2427d8 100%);
   background-size: 200% 200%;
   animation: plasma 10s ease-in-out infinite;
 }

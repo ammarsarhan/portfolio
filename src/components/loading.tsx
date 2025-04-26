@@ -1,7 +1,10 @@
 import { useEffect } from "react"
 import gsap, { Power4 } from "gsap";
+import { useLenis } from "lenis/react";
 
 export default function Loading({ progress } : { progress: number }) {
+    const lenis = useLenis();
+
     useEffect(() => {
         const target = 'div.loading-container > div:first-child > div > span > span';
         const tl = gsap.timeline();
@@ -25,7 +28,12 @@ export default function Loading({ progress } : { progress: number }) {
 
     useEffect(() => {
         if (progress === 100) {
-            const tl = gsap.timeline();
+            const tl = gsap.timeline({ 
+                onComplete: () => { 
+                    document.documentElement.style.overflow = 'auto';
+                    lenis?.start();
+                } 
+            });
 
             tl.to('div.loading-container > div:first-child', {
                 duration: 0.5,
